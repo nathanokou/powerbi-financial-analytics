@@ -95,8 +95,8 @@ The company needed to:
 ## 📸 Dashboard Screenshots
 
 ### Main Overview
-<!-- ![Dashboard Overview](screenshots/dashboard-overview.png) -->
-*Coming soon - Adding professional dashboard visualizations*
+![Data Modelisation](screenshots/data_model.png) 
+<!-- *Coming soon - Adding professional dashboard visualizations* -->
 
 ### Sales KPIs
 <!-- ![Sales KPIs](screenshots/sales-kpis.png) -->
