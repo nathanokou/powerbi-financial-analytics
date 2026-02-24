@@ -91,10 +91,12 @@ SUMX(
 ## 📸 Dashboard Screenshots
 
 ### Main Overview
-![Dashboard Overview](screenshots/dashboard-overview.png)
+<!-- ![Dashboard Overview](screenshots/dashboard-overview.png) -->
+*Coming soon - Adding professional dashboard visualizations*
 
 ### Sales KPIs
-![Sales KPIs](screenshots/sales-kpis.png)
+<!-- ![Sales KPIs](screenshots/sales-kpis.png) -->
+*Coming soon*
 
 ## Key Learnings
 - Implemented **context transition** for complex calculations
