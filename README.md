@@ -4,7 +4,7 @@ Financial KPI dashboard analyzing $2.3M+ transactions with Power BI and DAX
 # Financial Analytics Dashboard - Power BI
 
 ## Project Overview
-Comprehensive financial analytics dashboard analyzing **$2.3M+ transactions** across 1,862 products. 
+Comprehensive financial analytics dashboard analyzing **9994 transactions** across 1,862 products. 
 Built to identify revenue opportunities and optimize product performance using advanced DAX measures and dimensional data modeling.
 
 ## Business Problem
@@ -28,6 +28,8 @@ The company needed to:
 ## Technical Highlights
 
 ### Advanced DAX Measures (few measures)
+<details>
+<summary>Click me</summary>
 ```dax
 total_Profit = SUM(Fact_Sales[Profit])
 -------------------------------------
@@ -82,10 +84,10 @@ SUMX(
     profit_attendu
 ) 
 ```
-
+</details>
 ### Data Model
-- **Fact Table:** Transactions (2.3M rows)
-- **Dimensions:** Products, Time, Geography, Customer, Category
+- **Fact Table:** Fact_Sales (9994 rows)
+- **Dimensions:** Dim_Product, Dim_Date, Dim_Region, Dim_Customer, Dim_order, Dim_Shi
 - **Relationships:** Star schema optimized for query performance
 
 ## 📸 Dashboard Screenshots
