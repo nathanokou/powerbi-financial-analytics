@@ -29,62 +29,64 @@ The company needed to:
 
 ### Advanced DAX Measures (few measures)
 <details>
-<summary>Click me</summary>
-```dax
-total_Profit = SUM(Fact_Sales[Profit])
--------------------------------------
-total_CA = SUM(Fact_Sales[Sales])
--------------------------------------
-Top10_Profitable_Cities = 
-VAR Top10Cities = 
-    TOPN(10, VALUES(Dim_Region[City]), [total_CA], DESC)
-VAR DeficitCities = {"Philadelphia", "Houston", "Chicago", "Jacksonville"}
-RETURN
-CALCULATE(
-    [total_Profit],
-    FILTER(
-        Top10Cities,
-        NOT(Dim_Region[City] IN DeficitCities)
-    )
-)
--------------------------------------
-Top10_Loss_Cities = 
-CALCULATE(
-    [total_Profit],
-    Dim_Region[City] IN {"Philadelphia", "Houston", "Chicago", "Jacksonville"}
-)
--------------------------------------
-Profit_Scenario_Average_Discount = 
-SUMX(
-    Fact_Sales,
-    VAR Sales_Ligne = Fact_Sales[Sales]
-    VAR Quantity_Ligne = Fact_Sales[Quantity]
-    VAR Discount_Ligne = Fact_Sales[Discount]
-    VAR DiscountNormal = 0.20
-    VAR marge = 0.05
+    <summary>Click me</summary>
     
-    // ÉTAPE 1 : Retrouver le prix unitaire original
-    VAR PrixUnitaireOriginal = 
-        DIVIDE(
-            Sales_Ligne, 
-            Quantity_Ligne * (1 - Discount_Ligne), 
-            0
-        )
-    
-    // ÉTAPE 2 : Calculer le nouveau prix unitaire avec discount normal
-    VAR PrixUnitaireNouveau = PrixUnitaireOriginal * (1 - DiscountNormal)
-    
-    // ÉTAPE 3 : Calculer le nouveau CA total pour cette ligne
-    VAR CANouveau_Ligne = PrixUnitaireNouveau * Quantity_Ligne
-    
-    // ÉTAPE 4 : Calculer le gain de CA pour cette ligne
-    VAR profit_attendu = CANouveau_Ligne*marge
-    
+    ```dax
+    total_Profit = SUM(Fact_Sales[Profit])
+    -------------------------------------
+    total_CA = SUM(Fact_Sales[Sales])
+    -------------------------------------
+    Top10_Profitable_Cities = 
+    VAR Top10Cities = 
+        TOPN(10, VALUES(Dim_Region[City]), [total_CA], DESC)
+    VAR DeficitCities = {"Philadelphia", "Houston", "Chicago", "Jacksonville"}
     RETURN
-    profit_attendu
-) 
-```
+    CALCULATE(
+        [total_Profit],
+        FILTER(
+            Top10Cities,
+            NOT(Dim_Region[City] IN DeficitCities)
+        )
+    )
+    -------------------------------------
+    Top10_Loss_Cities = 
+    CALCULATE(
+        [total_Profit],
+        Dim_Region[City] IN {"Philadelphia", "Houston", "Chicago", "Jacksonville"}
+    )
+    -------------------------------------
+    Profit_Scenario_Average_Discount = 
+    SUMX(
+        Fact_Sales,
+        VAR Sales_Ligne = Fact_Sales[Sales]
+        VAR Quantity_Ligne = Fact_Sales[Quantity]
+        VAR Discount_Ligne = Fact_Sales[Discount]
+        VAR DiscountNormal = 0.20
+        VAR marge = 0.05
+        
+        // ÉTAPE 1 : Retrouver le prix unitaire original
+        VAR PrixUnitaireOriginal = 
+            DIVIDE(
+                Sales_Ligne, 
+                Quantity_Ligne * (1 - Discount_Ligne), 
+                0
+            )
+        
+        // ÉTAPE 2 : Calculer le nouveau prix unitaire avec discount normal
+        VAR PrixUnitaireNouveau = PrixUnitaireOriginal * (1 - DiscountNormal)
+        
+        // ÉTAPE 3 : Calculer le nouveau CA total pour cette ligne
+        VAR CANouveau_Ligne = PrixUnitaireNouveau * Quantity_Ligne
+        
+        // ÉTAPE 4 : Calculer le gain de CA pour cette ligne
+        VAR profit_attendu = CANouveau_Ligne*marge
+        
+        RETURN
+        profit_attendu
+    ) 
+    ```
 </details>
+
 ### Data Model
 - **Fact Table:** Fact_Sales (9994 rows)
 - **Dimensions:** Dim_Product, Dim_Date, Dim_Region, Dim_Customer, Dim_order, Dim_Shi
