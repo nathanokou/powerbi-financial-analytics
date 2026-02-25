@@ -95,6 +95,9 @@ The company needed to:
 ## 📸 Dashboard Screenshots
 
 ### Main Overview
+![Main_Overview](screenshots/data_overview.png) 
+
+### Data Model
 ![Data Modelisation](screenshots/data_model.png) 
 <!-- *Coming soon - Adding professional dashboard visualizations* -->
 
